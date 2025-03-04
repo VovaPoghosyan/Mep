@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  # Laravel Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: mep-backend
+    restart: unless-stopped
+    volumes:
+      - ./backend:/var/www/html
+      - ./backend/vendor:/var/www/html/vendor
+    depends_on:
+      - db
+    networks:
+      - mep-network
+    ports:
+      - "8000:80"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=mep_db
+      - DB_USERNAME=mep_user
+      - DB_PASSWORD=mep_password
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - APP_KEY=base64:FwENmBR8mEuMRgz/W0ePMFa5pbi449NsnkRX6s1waXQ=
+
+  # Vue.js Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: mep-frontend
+    restart: unless-stopped
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    networks:
+      - mep-network
+    depends_on:
+      - backend
+
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    container_name: mep-db
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=mep_db
+      - MYSQL_USER=mep_user
+      - MYSQL_PASSWORD=mep_password
+      - MYSQL_ROOT_PASSWORD=root_password
+    volumes:
+      - mep-db-data:/var/lib/mysql
+    networks:
+      - mep-network
+    ports:
+      - "3306:3306"
+
+  # phpMyAdmin for database management
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: mep-phpmyadmin
+    restart: unless-stopped
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+    ports:
+      - "8080:80"
+    networks:
+      - mep-network
+    depends_on:
+      - db
+
+networks:
+  mep-network:
+    driver: bridge
+
+volumes:
+  mep-db-data:

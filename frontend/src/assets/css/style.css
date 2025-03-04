@@ -1,0 +1,156 @@
+/* Additional styles that are not in App.vue */
+
+/* Tabs */
+.tabs {
+  display: flex;
+  list-style: none;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 1rem;
+}
+
+.tab-item {
+  margin-bottom: -1px;
+}
+
+.tab-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: var(--secondary-color);
+  border: 1px solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.tab-link.active {
+  color: var(--primary-color);
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.tab-content {
+  padding: 1rem 0;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* Device info */
+.device-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.info-item {
+  margin-bottom: 0.5rem;
+}
+
+.info-label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+/* Manual list */
+.manual-list {
+  list-style: none;
+}
+
+.manual-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.manual-icon {
+  margin-right: 0.5rem;
+  color: var(--primary-color);
+}
+
+.manual-link {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.manual-link:hover {
+  text-decoration: underline;
+}
+
+/* Ticket form */
+.ticket-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-title {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.form-actions .btn {
+  margin-left: 0.5rem;
+}
+
+/* File upload */
+.file-upload {
+  position: relative;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.file-upload input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+.file-upload-label {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  color: white;
+  background-color: var(--primary-color);
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.file-name {
+  margin-left: 0.5rem;
+}
+
+/* Not found page */
+.not-found {
+  text-align: center;
+  padding: 2rem;
+}
+
+.not-found h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.not-found p {
+  margin-bottom: 2rem;
+}

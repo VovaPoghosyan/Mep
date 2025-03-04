@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="60" viewBox="0 0 200 60">
+  <style>
+    .logo-text { font-family: Arial, sans-serif; font-weight: bold; }
+    .main-text { font-size: 24px; }
+    .sub-text { font-size: 12px; }
+  </style>
+  <rect x="10" y="10" width="40" height="40" rx="5" fill="#0056b3" />
+  <text x="60" y="35" class="logo-text main-text" fill="#0056b3">MEP</text>
+  <text x="60" y="50" class="logo-text sub-text" fill="#6c757d">Mise en Place</text>
+  <path d="M20 25 L25 35 L30 30 L35 40" stroke="white" stroke-width="2" fill="none" />
+  <circle cx="30" cy="25" r="3" fill="white" />
+</svg>
